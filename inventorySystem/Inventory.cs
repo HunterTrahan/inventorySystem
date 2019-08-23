@@ -9,6 +9,7 @@ namespace inventorySystem
     class Inventory
     {
         int damage = 5;
+        int weapon = 0;
         float gold = 0.00f;
 
 
@@ -33,7 +34,7 @@ namespace inventorySystem
                 //Check input
                 if (choice == "1")
                 {
-                    equipWeapon();
+                   equipWeapon();
                 }
 
                 else if (choice == "2")
@@ -60,18 +61,98 @@ namespace inventorySystem
         }
 
 
+
+
         public void equipWeapon()
         {
-            Console.WriteLine("Equipped a weapon.");
-            damage = 15;
-            Console.WriteLine("Damage: " + damage);
+
+            string menu2 = "";
+
+            if (weapon == 0)
+            {
+
+                while (menu2 != "0")
+                {
+                    Console.WriteLine("\nWeapon list");
+                    Console.WriteLine("0: Back");
+                    Console.WriteLine("1: Dagger");
+                    Console.WriteLine("2: Sword");
+                    Console.WriteLine("3: Greatsword");
+                    Console.WriteLine("4: Warhammer");
+
+                    string choice2 = "";
+
+                    choice2 = Console.ReadLine();
+                    Console.WriteLine("");
+
+
+                    if (choice2 == "0")
+                    {
+                        menu2 = "0";
+                    }
+
+                    else if (choice2 == "1")
+                    {
+                        Console.WriteLine("Equipped a dagger.");
+                        damage = 10;
+                        Console.WriteLine("Damage: " + damage);
+                        weapon = 1;
+                        menu2 = "0";
+                    }
+
+                    else if (choice2 == "2")
+                    {
+                        Console.WriteLine("Equipped a sword.");
+                        damage = 15;
+                        Console.WriteLine("Damage: " + damage);
+                        weapon = 1;
+                        menu2 = "0";
+                    }
+
+                    else if (choice2 == "3")
+                    {
+                        Console.WriteLine("Equipped a Greatsword.");
+                        damage = 20;
+                        Console.WriteLine("Damage: " + damage);
+                        weapon = 1;
+                        menu2 = "0";
+                    }
+
+                    else if (choice2 == "4")
+                    {
+                        Console.WriteLine("Equipped a Warhammer.");
+                        damage = 25;
+                        Console.WriteLine("Damage: " + damage);
+                        weapon = 1;
+                        menu2 = "0";
+                    }
+
+                }
+
+            }
+
+
+            else
+            {
+                Console.WriteLine("There is a weapon equipped");
+            }
         }
 
         public void unequipWeapon()
         {
-            Console.WriteLine("Unequiped a weapon.");
-            damage = 5;
-            Console.WriteLine("Damage: " + damage);
+            if (weapon == 1)
+            {
+                Console.WriteLine("Unequiped a weapon.");
+                damage = 5;
+                Console.WriteLine("Damage: " + damage);
+                weapon = 0;
+            }
+
+            else
+            {
+                Console.WriteLine("There is no weapon equipped");
+            }
+            
         }
 
         public void addGold(float amount)
@@ -85,6 +166,12 @@ namespace inventorySystem
         {
             Console.WriteLine("Lost " + amount + " gold!");
             gold -= amount;
+
+            if (gold < 0);
+            {
+                gold = 0;
+            }
+
             Console.WriteLine(" Gold: " + gold);
         }
 
