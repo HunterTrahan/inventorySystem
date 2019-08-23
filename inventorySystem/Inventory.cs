@@ -9,9 +9,14 @@ namespace inventorySystem
     class Inventory
     {
         int damage = 5;
-        int weapon = 0;
+        bool hasWeapon = false;
         int defense = 5;
-        int armor = 0;
+        bool hasArmor = false;
+        int armorValue = 0;
+        int weightTotal = 0;
+        int weightFromWeapon = 0;
+        int weightFromArmor = 0;
+        int weightLimit = 100;
         float gold = 0.00f;
 
 
@@ -31,6 +36,8 @@ namespace inventorySystem
                 Console.WriteLine("5: Add Gold");
                 Console.WriteLine("6: Subtract Gold");
 
+               
+
                 //Get input
                 choice = Console.ReadLine();
                 Console.WriteLine("");
@@ -39,21 +46,33 @@ namespace inventorySystem
                 if (choice == "1")
                 {
                    equipWeapon();
+                    // Update total weight
+                    weightTotal = weightFromArmor + weightFromWeapon;
+                    Console.WriteLine("Damage: " + damage + " Weight: " + weightTotal);
                 }
 
                 else if (choice == "2")
                 {
                     unequipWeapon();
+                    // Update total weight
+                    weightTotal = weightFromArmor + weightFromWeapon;
+                    Console.WriteLine("Damage: " + damage + " Weight: " + weightTotal);
                 }
 
                 else if (choice == "3")
                 {
                     equipArmor();
+                    // Update total weight
+                    weightTotal = weightFromArmor + weightFromWeapon;
+                    Console.WriteLine("defense: " + (armorValue + defense) + " weight: " + weightTotal);
                 }
 
                 else if (choice == "4")
                 {
                     unequipArmor();
+                    // Update total weight
+                    weightTotal = weightFromArmor + weightFromWeapon;
+                    Console.WriteLine("defense: " + (armorValue + defense) + " weight: " + weightTotal);
                 }
 
                 else if (choice == "5")
@@ -82,7 +101,7 @@ namespace inventorySystem
 
             string menu2 = "";
 
-            if (weapon == 0)
+            if (!hasWeapon)
             {
 
                 while (menu2 != "0")
@@ -109,8 +128,9 @@ namespace inventorySystem
                     {
                         Console.WriteLine("Equipped a dagger.");
                         damage = 10;
-                        Console.WriteLine("Damage: " + damage);
-                        weapon = 1;
+                        weightFromWeapon = 5;
+                        Console.WriteLine("Damage: " + damage + "." + " Weight added 5.");
+                        hasWeapon = true;
                         menu2 = "0";
                     }
 
@@ -118,8 +138,9 @@ namespace inventorySystem
                     {
                         Console.WriteLine("Equipped a sword.");
                         damage = 15;
-                        Console.WriteLine("Damage: " + damage);
-                        weapon = 1;
+                        weightFromWeapon = 10;
+                        Console.WriteLine("Damage: " + damage + "." + " Weight added 10.");
+                        hasWeapon = true;
                         menu2 = "0";
                     }
 
@@ -127,8 +148,9 @@ namespace inventorySystem
                     {
                         Console.WriteLine("Equipped a Greatsword.");
                         damage = 20;
-                        Console.WriteLine("Damage: " + damage);
-                        weapon = 1;
+                        weightFromWeapon = 15;
+                        Console.WriteLine("Damage: " + damage + "." + " Weight added 15.");
+                        hasWeapon= true;
                         menu2 = "0";
                     }
 
@@ -136,8 +158,9 @@ namespace inventorySystem
                     {
                         Console.WriteLine("Equipped a Warhammer.");
                         damage = 25;
-                        Console.WriteLine("Damage: " + damage);
-                        weapon = 1;
+                        weightFromWeapon = 20;
+                        Console.WriteLine("Damage: " + damage + "." + " Weight added 20.");
+                        hasWeapon = true;
                         menu2 = "0";
                     }
 
@@ -148,23 +171,24 @@ namespace inventorySystem
 
             else
             {
-                Console.WriteLine("There is a weapon equipped");
+                Console.WriteLine("There is a weapon equipped." + " Current weight amount " + weightFromWeapon + ".");
             }
         }
 
         public void unequipWeapon()
         {
-            if (weapon == 1)
+            if (hasWeapon)
             {
                 Console.WriteLine("Unequiped a weapon.");
                 damage = 5;
-                Console.WriteLine("Damage: " + damage);
-                weapon = 0;
+                weightFromWeapon = 0;
+                
+                hasWeapon = false;
             }
 
             else
             {
-                Console.WriteLine("There is no weapon equipped");
+                Console.WriteLine("There is no weapon equipped.");
             }
             
         }
@@ -174,7 +198,7 @@ namespace inventorySystem
         {
             string menu3 = "";
 
-            if (armor == 0)
+            if (!hasArmor)
             {
 
                 while (menu3 != "0")
@@ -200,36 +224,40 @@ namespace inventorySystem
                     else if (choice2 == "1")
                     {
                         Console.WriteLine("Equipped Leather armor.");
-                        armor = 10;
-                        Console.WriteLine("Defense: " + armor);
-                        armor = 1;
+                        armorValue = 10;
+                        weightFromArmor = 15;
+                        Console.WriteLine("Defense: " + armorValue);
+                        hasArmor = true;
                         menu3 = "0";
                     }
 
                     else if (choice2 == "2")
                     {
                         Console.WriteLine("Equipped Iron armor.");
-                        armor = 15;
-                        Console.WriteLine("Defense: " + armor);
-                        armor = 1;
+                        armorValue= 15;
+                        weightFromArmor = 20;
+                        Console.WriteLine("Defense: " + armorValue);
+                        hasArmor = true;
                         menu3 = "0";
                     }
 
                     else if (choice2 == "3")
                     {
                         Console.WriteLine("Equipped Steel armor.");
-                        armor = 20;
-                        Console.WriteLine("Defense: " + armor);
-                        armor = 1;
+                        armorValue = 20;
+                        weightFromArmor = 25;
+                        Console.WriteLine("Defense: " + armorValue);
+                        hasArmor = true;
                         menu3 = "0";
                     }
 
                     else if (choice2 == "4")
                     {
                         Console.WriteLine("Equipped Platnium armor.");
-                        armor = 25;
-                        Console.WriteLine("Defense: " + armor);
-                        armor = 1;
+                        armorValue = 25;
+                        weightFromArmor = 30;
+                        Console.WriteLine("Defense: " + armorValue);
+                        hasArmor = true;
                         menu3 = "0";
                     }
 
@@ -245,12 +273,14 @@ namespace inventorySystem
 
         public void unequipArmor()
         {
-            if (armor == 1)
+            if (hasArmor)
             {
                 Console.WriteLine("Unequiped armor.");
-                armor = 5;
-                Console.WriteLine("defense: " + armor);
-                defense = 0;
+                armorValue = 0;
+                hasArmor = false;
+                weightFromArmor = 0;
+                
+                defense = 5;
             }
 
             else
@@ -258,6 +288,15 @@ namespace inventorySystem
                 Console.WriteLine("There is no armor equipped");
             }
 
+        }
+
+        //weight System
+        public void checkWeight()
+        {
+            if (weightFromWeapon + weightFromArmor <= weightLimit)
+            {
+
+            }
         }
 
         //gold System
