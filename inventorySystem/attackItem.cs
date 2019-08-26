@@ -21,7 +21,7 @@ namespace inventorySystem
     
        public attackItem(string newName, int newDamage, int newWeight)
        {
-            Name = newName;
+            name = newName;
             _damage = newDamage;
             weight = newWeight;
        }

@@ -9,6 +9,21 @@ namespace inventorySystem
     class Item
     {
         protected int weight;
-        protected string Name;
+        public int Weight
+        {
+            get
+            {
+                return weight;
+            }
+        }
+
+        protected string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
     }
 }
