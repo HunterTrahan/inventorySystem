@@ -15,9 +15,11 @@ namespace inventorySystem
             string name = "";
             string choice = "";
 
+            //start
             Console.WriteLine("Enter the name of party member 1: ");
             name = Console.ReadLine();
 
+            //Player Creation
             while (choice != "1" && choice != "2")
             {
                 //display menu
@@ -43,32 +45,61 @@ namespace inventorySystem
 
             player.Print();
 
+            player.OpenInventory();
+
+            //party memebers
             Charater party1 = new Charater("Chie");
             Charater party2 = new Charater("Futaba");
             party1.Print();
             party2.Print();
 
+            //inventory menu selection
+            while (choice != "0")
+            {
+                
+                Console.WriteLine("\nWhose inventory?");
+                Console.WriteLine("0: Exit");
+                Console.WriteLine("1: " + player.Name());
+                Console.WriteLine("2: " + party1.Name());
+                Console.WriteLine("3: " + party2.Name());
+                choice = Console.ReadLine();
+
+                if (choice == "1")
+                {
+                    player.OpenInventory();
+                }
+
+                else if (choice == "2")
+                {
+                    party1.OpenInventory();
+                }
+
+                else if (choice == "3")
+                {
+                    party2.OpenInventory();
+                }
+
+                if (choice == "1")
+                {
+                    player = new Knight(name);
+                }
+                else if (choice == "2")
+                {
+                    player = new Rogue(name);
+                }
+                else
+                {
+                    player = new Charater(name);
+                }
+            }
+
+            //EXP gains
             player.EXP = 30;
             player.EXP = player.EXP = 50;
             player.EXP++;
             player.EXP += 40;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
-            player.EXP += 200;
 
-
+            //Arrays
             int[] testArray = new int[4];
 
             testArray[0] = 1;

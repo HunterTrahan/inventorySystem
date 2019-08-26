@@ -17,6 +17,7 @@ namespace inventorySystem
         //character specfic inevntory
        private Inventory inventory = new Inventory();
 
+       //stats base values
        protected int _Health = 100;
        protected int _Strength = 5;
        protected int _Mana = 100;
@@ -33,6 +34,7 @@ namespace inventorySystem
             return _name;
         }
 
+        //Stats
         public void Print()
         {
             Console.WriteLine(_name);
@@ -44,6 +46,11 @@ namespace inventorySystem
             Console.WriteLine("Strength: " + _Strength);
             Console.WriteLine("Wisdom: " + _Wisdom);
             Console.WriteLine("");
+        }
+
+        public void OpenInventory()
+        {
+            inventory.Menu();
         }
 
         //exp system
