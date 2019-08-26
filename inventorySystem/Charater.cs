@@ -13,6 +13,16 @@ namespace inventorySystem
         private int _level = 1;
         private int[] _requiredEXP = { 100, 200, 600, 1000 };
 
+
+        //character specfic inevntory
+       private Inventory inventory = new Inventory();
+
+       protected int _Health = 100;
+       protected int _Strength = 5;
+       protected int _Mana = 100;
+       protected int _Agility = 5;
+       protected int _Wisdom = 5;
+
         public Charater(string name)
         {
             _name = name;
@@ -28,6 +38,12 @@ namespace inventorySystem
             Console.WriteLine(_name);
             Console.WriteLine("Level: " + _level);
             Console.WriteLine("EXP: " + _xp);
+            Console.WriteLine("Health: " + _Health);
+            Console.WriteLine("Mana: " + _Mana);
+            Console.WriteLine("Agility: " + _Agility);
+            Console.WriteLine("Strength: " + _Strength);
+            Console.WriteLine("Wisdom: " + _Wisdom);
+            Console.WriteLine("");
         }
 
         //exp system

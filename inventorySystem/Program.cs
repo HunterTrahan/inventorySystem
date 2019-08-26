@@ -12,8 +12,35 @@ namespace inventorySystem
         {
             //Inventory inventory = new Inventory();
             //inventory.Menu();
+            string name = "";
+            string choice = "";
 
-            Charater player = new Charater("Aigis");
+            Console.WriteLine("Enter the name of party member 1: ");
+            name = Console.ReadLine();
+
+            while (choice != "1" && choice != "2")
+            {
+                //display menu
+                Console.WriteLine("\nChoose a job:");
+                Console.WriteLine("1: Knight");
+                Console.WriteLine("2: Rogue");
+                choice = Console.ReadLine();
+            }
+
+            Charater player;
+            if (choice == "1")
+            {
+                player = new Knight(name);
+            }
+            else if (choice == "2")
+            {
+                player = new Rogue(name);
+            }
+            else
+            {
+                player = new Charater(name);
+            }
+
             player.Print();
 
             Charater party1 = new Charater("Chie");
