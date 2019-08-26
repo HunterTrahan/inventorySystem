@@ -51,6 +51,7 @@ namespace inventorySystem
             Charater party1 = new Charater("Chie");
             Charater party2 = new Charater("Futaba");
             party1.Print();
+            Console.WriteLine("");
             party2.Print();
 
             //inventory menu selection
