@@ -401,7 +401,7 @@ namespace inventorySystem
             Console.WriteLine("Lost " + amount + " gold!");
             _gold -= amount;
 
-            if (_gold < 0);
+            if (_gold < 0) ;
             {
                 _gold = 0;
             }
