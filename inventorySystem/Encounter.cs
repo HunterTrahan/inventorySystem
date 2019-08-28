@@ -9,12 +9,12 @@ namespace inventorySystem
     class Encounter
     {
         private Monster[] _badMonsters;
-        private Monster[] _evilMonsters;
+        private Monster[] _goodMonsters;
 
         public Encounter(Monster[] team1, Monster[] team2)
         {
             _badMonsters = team1;
-            _evilMonsters = team2;
+            _goodMonsters = team2;
         }
 
         public void Print()
@@ -27,10 +27,10 @@ namespace inventorySystem
                 currentMonster.Print();
             }
 
-            //Evil Team
-            for (int i = 0; i < _evilMonsters.Length; i++)
+            //Good Team
+            for (int i = 0; i < _goodMonsters.Length; i++)
             {
-                Monster currentMonster = _evilMonsters[i];
+                Monster currentMonster = _goodMonsters[i];
                 currentMonster.Print();
             }
         }
@@ -42,16 +42,16 @@ namespace inventorySystem
                 //Iterate through bad monsters
                 //Have the cuurent bad monsters fight the first evil Monster
                 Monster currentMonster = _badMonsters[i];
-                currentMonster.Fight(_evilMonsters);
+                currentMonster.Fight(_goodMonsters);
 
                
             }
 
-            for (int i = 0; i < _evilMonsters.Length; i++)
+            for (int i = 0; i < _goodMonsters.Length; i++)
             {
                 //Iterate through evil monsters
                 //Have the cuurent evil monsters fight the first bad Monster
-                Monster currentMonster2 = _evilMonsters[i];
+                Monster currentMonster2 = _goodMonsters[i];
                 currentMonster2.Fight(_badMonsters);
             }
         }
@@ -65,27 +65,22 @@ namespace inventorySystem
             {
                 //check if team 1 is alive
                 bool badAlive = true;
+                int totalBadHealth = 0;
                 for (int i = 0; i < _badMonsters.Length; i++)
                 {
                     Monster currentMonster = _badMonsters[1];
-                    if (currentMonster.Health > 0)
-                    {
-                        badAlive = true;
-                        break;
-                    }
-
-                    else if (currentMonster.Health <= 0)
-                    {
-                        badAlive = false;
-                    }
+                    //total up the health of each monster
+                    totalBadHealth += currentMonster.Health;
                 }
+
+                badAlive = totalBadHealth > 0;
 
                 //check if team 2 is alive
                 bool evilAlive = true;
 
-                for (int i = 0; i < _evilMonsters.Length; i++)
+                for (int i = 0; i < _goodMonsters.Length; i++)
                 {
-                    Monster currentMonster = _evilMonsters[1];
+                    Monster currentMonster = _goodMonsters[1];
                     if (currentMonster.Health > 0)
                     {
                         evilAlive = true;

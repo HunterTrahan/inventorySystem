@@ -18,16 +18,16 @@ namespace inventorySystem
             Monster wolf = new Monster("Wolf", 150, 15);
 
             //monster arrays used to make teams
-            Monster[] badTeam = { slime, skeleton};
+            Monster[] goodTeam = { slime, skeleton};
             Monster[] evilTeam = { zombie, wolf };
 
             //encounter from the two arrays of monsters
-            Encounter encounter = new Encounter(badTeam, evilTeam);
+            Encounter encounter = new Encounter(goodTeam, evilTeam);
 
             encounter.Print();
 
             Console.WriteLine("");
-            encounter.BeginRound();
+            encounter.Start ();
 
             Console.ReadKey();
             return;
