@@ -10,14 +10,24 @@ namespace inventorySystem
     {
         static void Main(string[] args)
         {
+
+            //monster list
             Monster slime = new Monster("Slime", 100 , 10);
             Monster skeleton = new Monster("Skeleton", 150, 20);
+            Monster zombie = new Monster("Zombie", 200, 5);
+            Monster wolf = new Monster("Wolf", 150, 15);
 
-            slime.Print();
-            skeleton.Print();
+            //monster arrays used to make teams
+            Monster[] badTeam = { slime, skeleton};
+            Monster[] evilTeam = { zombie, wolf };
 
-            skeleton.Fight(slime);
-            slime.Fight(skeleton);
+            //encounter from the two arrays of monsters
+            Encounter encounter = new Encounter(badTeam, evilTeam);
+
+            encounter.Print();
+
+            Console.WriteLine("");
+            encounter.BeginRound();
 
             Console.ReadKey();
             return;
