@@ -56,5 +56,64 @@ namespace inventorySystem
             }
         }
 
+        public void Start()
+        {
+            Console.WriteLine("\nEnciunter Start!");
+            bool stillFighting = true;
+
+            while (stillFighting)
+            {
+                //check if team 1 is alive
+                bool badAlive = true;
+                for (int i = 0; i < _badMonsters.Length; i++)
+                {
+                    Monster currentMonster = _badMonsters[1];
+                    if (currentMonster.Health > 0)
+                    {
+                        badAlive = true;
+                        break;
+                    }
+
+                    else if (currentMonster.Health <= 0)
+                    {
+                        badAlive = false;
+                    }
+                }
+
+                //check if team 2 is alive
+                bool evilAlive = true;
+
+                for (int i = 0; i < _evilMonsters.Length; i++)
+                {
+                    Monster currentMonster = _evilMonsters[1];
+                    if (currentMonster.Health > 0)
+                    {
+                        evilAlive = true;
+                        break;
+                    }
+
+                    else if (currentMonster.Health <= 0)
+                    {
+                        evilAlive = false;
+                    }
+                }
+
+
+                //if both teams are alive
+                if (badAlive && evilAlive)
+                {
+                    //fight
+                    stillFighting = true;
+                    BeginRound();
+                }
+
+                else
+                {
+                    //stop
+                    stillFighting = false;
+                }
+            }
+        }
+
     }
 }
