@@ -18,16 +18,30 @@ namespace inventorySystem
        private int _weightFromArmor = 0;
        private int _weightLimit = 50;
        private float _gold = 0.00f;
+       private attackItem[] _weapons;
+       private DefenseItem[] _armor;
+
+        //Populates the weapon list (Array)
         private attackItem Dagger = new attackItem("Iron Dagger", 10, 5);
         private attackItem Sword = new attackItem("Steel Sword", 15, 15);
         private attackItem Sword2 = new attackItem("Claymore", 25, 20);
         private attackItem Hammer = new attackItem("Warhammer", 30, 30);
-        private attackItem[] weapons;
+
+
+        //Populates the armor list (Array)
+        private DefenseItem Leather = new DefenseItem("Leather Tunic", 10, 15);
+        private DefenseItem Iron = new DefenseItem("Iron Armor", 15, 20);
+        private DefenseItem Steel = new DefenseItem("Steel Armor", 20, 35);
+        private DefenseItem Platnium = new DefenseItem("Platnium Armor", 25, 40);
+        
 
         public Inventory()
         {
             attackItem[] weaponBag = { Dagger, Sword, Sword2, Hammer};
-            weapons = weaponBag;
+            _weapons = weaponBag;
+
+            DefenseItem[] armorBag = { Leather, Iron, Steel, Platnium };
+            _armor = armorBag;
         }
 
         //Returns the damage of weapons
@@ -152,8 +166,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromArmor, 5))
                         {
                             Console.WriteLine("Equipped a Iron Dagger.");
-                            _damage = weapons[0].Damage;
-                            _weightFromWeapon = 5;
+                            _damage = _weapons[0].Damage;
+                            _weightFromWeapon = _weapons[0].Weight;
                             Console.WriteLine("Damage: " + _damage + "." + " Weight added 5.");
                             _hasWeapon = true;
                             menu2 = "0";
@@ -171,8 +185,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromArmor, 10))
                         {
                             Console.WriteLine("Equipped a Steel Sword.");
-                            _damage = weapons[1].Damage;
-                            _weightFromWeapon = 15;
+                            _damage = _weapons[1].Damage;
+                            _weightFromWeapon = _weapons[1].Weight;
                             Console.WriteLine("Damage: " + _damage + "." + " Weight added 15.");
                             _hasWeapon = true;
                             menu2 = "0";
@@ -190,8 +204,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromArmor, 20))
                         {
                             Console.WriteLine("Equipped a Claymore.");
-                            _damage = weapons[2].Damage;
-                            _weightFromWeapon = 20;
+                            _damage = _weapons[2].Damage;
+                            _weightFromWeapon = _weapons[2].Weight;
                             Console.WriteLine("Damage: " + _damage + "." + " Weight added 20.");
                             _hasWeapon = true;
                             menu2 = "0";
@@ -209,8 +223,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromArmor, 30))
                         {
                             Console.WriteLine("Equipped a Warhammer.");
-                            _damage = weapons[3].Damage;
-                            _weightFromWeapon = 30;
+                            _damage = _weapons[3].Damage;
+                            _weightFromWeapon = _weapons[3].Weight;
                             Console.WriteLine("Damage: " + _damage + "." + " Weight added 30.");
                             _hasWeapon = true;
                             menu2 = "0";
@@ -284,9 +298,9 @@ namespace inventorySystem
                     {
                         if(checkWeight(_weightFromWeapon, 15))
                         {
-                            Console.WriteLine("Equipped Leather armor.");
-                            _armorValue = 10;
-                            _weightFromArmor = 15;
+                            Console.WriteLine("Equipped Leather tunic.");
+                            _armorValue = _armor[0].Defense;
+                            _weightFromArmor = _armor[0].Weight;
                             Console.WriteLine("Defense: " + _armorValue);
                             _hasArmor = true;
                             menu3 = "0";
@@ -304,8 +318,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 20))
                         {
                             Console.WriteLine("Equipped Iron armor.");
-                            _armorValue = 15;
-                            _weightFromArmor = 20;
+                            _armorValue = _armor[1].Defense;
+                            _weightFromArmor = _armor[1].Weight;
                             Console.WriteLine("Defense: " + _armorValue);
                             _hasArmor = true;
                             menu3 = "0";
@@ -323,8 +337,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 25))
                         {
                             Console.WriteLine("Equipped Steel armor.");
-                            _armorValue = 20;
-                            _weightFromArmor = 35;
+                            _armorValue = _armor[2].Defense;
+                            _weightFromArmor = _armor[2].Weight;
                             Console.WriteLine("Defense: " + _armorValue);
                             _hasArmor = true;
                             menu3 = "0";
@@ -342,8 +356,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 40))
                         {
                             Console.WriteLine("Equipped Platnium armor.");
-                            _armorValue = 25;
-                            _weightFromArmor = 40;
+                            _armorValue = _armor[3].Defense;
+                            _weightFromArmor = _armor[3].Defense;
                             Console.WriteLine("Defense: " + _armorValue);
                             _hasArmor = true;
                             menu3 = "0";
