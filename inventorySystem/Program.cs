@@ -16,10 +16,14 @@ namespace inventorySystem
             Monster skeleton = new Monster("Skeleton", 150, 20);
             Monster zombie = new Monster("Zombie", 200, 5);
             Monster wolf = new Monster("Wolf", 150, 15);
+            Charater myself = new Rogue("Aigis");
 
             //monster arrays used to make teams
-            Monster[] goodTeam = { slime, skeleton};
-            Monster[] evilTeam = { zombie, wolf };
+            Creature[] goodTeam = { myself, slime, skeleton};
+            Creature[] evilTeam = { zombie, wolf };
+
+            //Open the inventory
+            myself.OpenInventory();
 
             //encounter from the two arrays of monsters
             Encounter encounter = new Encounter(goodTeam, evilTeam);
@@ -31,6 +35,7 @@ namespace inventorySystem
 
             Console.ReadKey();
             return;
+        
 
             //Inventory inventory = new Inventory();
             //inventory.Menu();
@@ -82,9 +87,9 @@ namespace inventorySystem
                 
                 Console.WriteLine("\nWhose inventory?");
                 Console.WriteLine("0: Exit");
-                Console.WriteLine("1: " + player.Name());
-                Console.WriteLine("2: " + party1.Name());
-                Console.WriteLine("3: " + party2.Name());
+                Console.WriteLine("1: " + player.GetName());
+                Console.WriteLine("2: " + party1.GetName());
+                Console.WriteLine("3: " + party2.GetName());
                 choice = Console.ReadLine();
 
                 if (choice == "1")

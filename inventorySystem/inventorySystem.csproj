@@ -46,6 +46,7 @@
     <Compile Include="attackItem.cs" />
     <Compile Include="Berserker.cs" />
     <Compile Include="Charater.cs" />
+    <Compile Include="Creature.cs" />
     <Compile Include="DefenseItem.cs" />
     <Compile Include="Encounter.cs" />
     <Compile Include="Inventory.cs" />

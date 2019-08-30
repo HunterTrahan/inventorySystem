@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace inventorySystem
 {
-    class Charater
+    class Charater : Creature
     {
         private string _name = "";
         private int _xp = 0;
@@ -30,18 +30,18 @@ namespace inventorySystem
             _name = name;
         }
 
-        public string Name()
+        public override string GetName()
         {
             return _name;
         }
 
-        public int Damage()
+        public override int GetDamage()
         {
             return _damage;
         }
 
         //Stats
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine(_name);
             Console.WriteLine("Level: " + _level);
@@ -87,5 +87,61 @@ namespace inventorySystem
                 
             }
         }
+
+        public override void Fight(Creature target)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+
+            int health = Health;
+
+            //get the damage of this monster
+            int damage = base.GetDamage();
+            //subtract the damatge from target monsters health
+            target.Health -= damage;
+            Console.WriteLine(base.GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
+        }
+
+        public override void Fight(Creature[] targets)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+
+            bool validInput = false;
+
+            while (!validInput)
+            {
+                //Print menu
+                Console.WriteLine("\nWho will " + base.GetName() + " fight? ");
+                //Iterate through targets
+
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    //Print each options with a number and current target
+                    string targetName = targets[i].GetName();
+                    Console.WriteLine(i + ": " + targetName);
+                }
+
+                //readLine to get user input
+                string input = Console.ReadLine();
+                //convert the input too an integer
+                int choice = Convert.ToInt32(input);
+                //check that the choice is valid (above 0 and below the arry length
+                if (choice >= 0 && choice < targets.Length)
+                {
+                    //set validinput to true
+                    validInput = true;
+                    //Fight the chosen target
+                    Fight(targets[choice]);
+                }
+
+            }
+
+        }
+
     }
 }

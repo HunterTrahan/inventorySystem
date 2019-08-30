@@ -6,66 +6,40 @@ using System.Threading.Tasks;
 
 namespace inventorySystem
 {
-    class Monster
+    class Monster : Creature
     {
         private string _name = "";
-        private int _monsterHealth = 150;
-        private int _monsterMaxHealth = 200;
         private int _monsterDamage = 10;
 
 
         public Monster(string name, int health, int damage)
         {
             _name = name;
-            _monsterHealth = health;
+            _health = health;
+            _maxHealth = health;
             _monsterDamage = damage;
 
         }
 
-        public string GetName()
+        public override string GetName()
         {
             return _name;
         }
 
-        public int GetDamage()
+        public override int GetDamage()
         {
             return _monsterDamage;
         }
 
-        public int Health
-        {
-            get
-            {
-                return _monsterHealth;
-            }
-
-            set
-            {
-                _monsterHealth = value;
-
-                //Checks for monster max health
-                if (_monsterHealth > _monsterMaxHealth)
-                {
-                    _monsterDamage = _monsterMaxHealth;
-                }
-
-                //checks for monster minimum health
-                else if (_monsterHealth < 0)
-                {
-                    _monsterHealth = 0;
-                }
-            }
-        }
-
         
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine("\n" + _name);
-            Console.WriteLine("Health: " + _monsterHealth + "/" + _monsterMaxHealth);
+            Console.WriteLine("Health: " + _health + "/" + _maxHealth);
             Console.WriteLine("Damage: " + _monsterDamage);
         }
 
-        public void Fight(Monster target)
+        public override void Fight(Creature target)
         {
             if(Health <= 0)
             {
@@ -81,7 +55,7 @@ namespace inventorySystem
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
         }
 
-        public void Fight(Monster[] targets)
+        public override void Fight(Creature[] targets)
         {
             if (Health <= 0)
             {
