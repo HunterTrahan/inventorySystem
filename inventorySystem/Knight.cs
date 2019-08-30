@@ -10,7 +10,7 @@ namespace inventorySystem
     {
         public Knight(string name) : base(name)
         {
-            _Health = 300;
+            _health = 300;
             _Mana = 50;
             _Strength = 7;
             _Agility = 4;

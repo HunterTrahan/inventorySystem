@@ -10,7 +10,7 @@ namespace inventorySystem
     {
         public Rogue(string name) : base(name)
         {
-            _Health = 80;
+            _health = 80;
             _Mana = 30;
             _Strength = 4;
             _Agility = 10;

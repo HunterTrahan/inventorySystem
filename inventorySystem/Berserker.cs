@@ -10,7 +10,7 @@ namespace inventorySystem
     {
         public Berserker(string name) : base(name)
         {
-            _Health = 100;
+            _health = 100;
             _Mana = 10;
             _Strength = 10;
             _Agility = 5;

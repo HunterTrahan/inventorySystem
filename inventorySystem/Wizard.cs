@@ -10,7 +10,7 @@ namespace inventorySystem
     {
         public Wizard(string name) : base(name)
         {
-            _Health = 50;
+            _health = 50;
             _Mana = 100;
             _Strength = 1;
             _Agility = 5;
