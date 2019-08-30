@@ -58,13 +58,13 @@ namespace inventorySystem
 
         public void Start()
         {
-            Console.WriteLine("\nEnciunter Start!");
+            Console.WriteLine("\nEncounter Start!");
             bool stillFighting = true;
 
             while (stillFighting)
             {
                 //check if team 1 is alive
-                bool badAlive = true;
+                bool goodAlive = true;
                 int totalBadHealth = 0;
                 for (int i = 0; i < _badMonsters.Length; i++)
                 {
@@ -73,7 +73,7 @@ namespace inventorySystem
                     totalBadHealth += currentMonster.Health;
                 }
 
-                badAlive = totalBadHealth > 0;
+                goodAlive = totalBadHealth > 0;
 
                 //check if team 2 is alive
                 bool evilAlive = true;
@@ -95,7 +95,7 @@ namespace inventorySystem
 
 
                 //if both teams are alive
-                if (badAlive && evilAlive)
+                if (goodAlive && evilAlive)
                 {
                     //fight
                     stillFighting = true;

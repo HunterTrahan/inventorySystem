@@ -11,6 +11,7 @@ namespace inventorySystem
         private string _name = "";
         private int _xp = 0;
         private int _level = 1;
+        private int _damage = 5;
         private int[] _requiredEXP = { 100, 200, 600, 1000 };
 
 
@@ -32,6 +33,11 @@ namespace inventorySystem
         public string Name()
         {
             return _name;
+        }
+
+        public int Damage()
+        {
+            return _damage;
         }
 
         //Stats
