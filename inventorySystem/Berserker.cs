@@ -11,6 +11,7 @@ namespace inventorySystem
         public Berserker(string name) : base(name)
         {
             _health = 100;
+            _maxHealth = _health;
             _Mana = 10;
             _Strength = 10;
             _Agility = 5;

@@ -8,13 +8,14 @@ namespace inventorySystem
 {
     class Scene
     {
-        protected string _name;
-        protected string _description;
-        protected int _north;
-        protected int _south;
-        protected int _east;
-        protected int _west;
-        
+        private string _name;
+        private string _description;
+        private int _north;
+        private int _south;
+        private int _east;
+        private int _west;
+        private string _hidden;
+
 
         public Scene(string name, int northID, int southID, int eastID, int westID, string description)
         {
@@ -24,6 +25,18 @@ namespace inventorySystem
             _south = southID;
             _east = eastID;
             _west = westID;
+            _hidden = "Nothing of intrest.";
+        }
+
+        public Scene(string name, int northID, int southID, int eastID, int westID, string description, string hidden)
+        {
+            _name = name;
+            _description = description;
+            _north = northID;
+            _south = southID;
+            _east = eastID;
+            _west = westID;
+            _hidden = hidden;
         }
 
         //Return the name
@@ -78,6 +91,11 @@ namespace inventorySystem
                 //We make sure the Map does not travel to -1
                 return -1;
             }
+        }
+
+        public string GetHidden()
+        {
+            return _hidden;
         }
 
     }

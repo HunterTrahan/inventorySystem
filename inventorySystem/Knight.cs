@@ -11,6 +11,7 @@ namespace inventorySystem
         public Knight(string name) : base(name)
         {
             _health = 300;
+            _maxHealth = _health;
             _Mana = 50;
             _Strength = 7;
             _Agility = 4;

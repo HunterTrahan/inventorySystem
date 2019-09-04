@@ -62,35 +62,40 @@ namespace inventorySystem
                 return;
             }
 
-            bool validInput = false;
+            
+            int choice = Program.random.Next(0, targets.Length);
+            Fight(targets[choice]);
+        
+            
+            //bool validInput = false;
 
-            while (!validInput)
-            {
-                //Print menu
-                Console.WriteLine("\nWho will " + GetName() + " fight? ");
-                //Iterate through targets
+            //while (!validInput)
+            //{
+            //    //Print menu
+            //    Console.WriteLine("\nWho will " + GetName() + " fight? ");
+            //    //Iterate through targets
 
-                for (int i = 0; i < targets.Length; i++)
-                {
-                    //Print each options with a number and current target
-                    string targetName = targets[i].GetName();
-                    Console.WriteLine(i + ": " + targetName);
-                }
+            //    for (int i = 0; i < targets.Length; i++)
+            //    {
+            //        //Print each options with a number and current target
+            //        string targetName = targets[i].GetName();
+            //        Console.WriteLine(i + ": " + targetName);
+            //    }
 
-                //readLine to get user input
-                string input = Console.ReadLine();
-                //convert the input too an integer
-                int choice = Convert.ToInt32(input);
-                //check that the choice is valid (above 0 and below the arry length
-                if (choice >= 0 && choice < targets.Length)
-                {
-                    //set validinput to true
-                    validInput = true;
-                    //Fight the chosen target
-                    Fight(targets[choice]);
-                }
+            //    //readLine to get user input
+            //    string input = Console.ReadLine();
+            //    //convert the input too an integer
+            //    int choice = Convert.ToInt32(input);
+            //    //check that the choice is valid (above 0 and below the arry length
+            //    if (choice >= 0 && choice < targets.Length)
+            //    {
+            //        //set validinput to true
+            //        validInput = true;
+            //        //Fight the chosen target
+            //        Fight(targets[choice]);
+            //    }
                 
-            }
+            //}
 
         }
 

@@ -8,6 +8,8 @@ namespace inventorySystem
 {
     class Program
     {
+        public static Random random = new Random();
+
         static void Main(string[] args)
         {
             //0: Courtyard
@@ -28,7 +30,7 @@ namespace inventorySystem
 
 
             Console.ReadKey();
-            return;
+            
 
             //monster list
             Monster slime = new Monster("Slime", 100 , 10);

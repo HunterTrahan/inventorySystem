@@ -71,8 +71,9 @@ namespace inventorySystem
                 Console.WriteLine("\nMenu");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Travel");
-                Console.WriteLine("2: Save");
-                Console.WriteLine("3: Load");
+                Console.WriteLine("2: Search");
+                Console.WriteLine("3: Save");
+                Console.WriteLine("4: Load");
 
                choice = Console.ReadLine();
 
@@ -84,10 +85,15 @@ namespace inventorySystem
 
                 else if (choice == "2")
                 {
-                    Save("save.txt");
+                    search();
                 }
 
                 else if (choice == "3")
+                {
+                    Save("save.txt");
+                }
+
+                else if (choice == "4")
                 {
                     Load("save.txt");
                 }
@@ -119,6 +125,18 @@ namespace inventorySystem
             }
         }
 
+
+        public void search()
+        {
+            //If the current scene is valide
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                //search the room
+                Console.WriteLine(_sceneList[_currentLocation].GetHidden());
+            }
+        }
+
+
         //Save and Load system
         public void Save(string path)
         {
@@ -132,12 +150,21 @@ namespace inventorySystem
 
         public void Load(string path)
         {
-            //Create a reader object for the file at our path
-            StreamReader reader = File.OpenText(path);
-            //Write to it the same way we read from the console
-            CurrentSceneID = Convert.ToInt32(reader.ReadLine());
-            //Close it
-            reader.Close();
+            if (File.Exists(path))
+            {
+                //Create a reader object for the file at our path
+                StreamReader reader = File.OpenText(path);
+                //Write to it the same way we read from the console
+                CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+                //Close it
+                reader.Close();
+            }
+
+            else
+            {
+                Console.WriteLine("Save file not found.");
+            }
+            
         }
     }
 }

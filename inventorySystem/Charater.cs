@@ -19,7 +19,7 @@ namespace inventorySystem
        private Inventory inventory = new Inventory();
 
        //stats base values
-       protected int _Health = 100;
+       //protected int _Health = 100;
        protected int _Strength = 5;
        protected int _Mana = 100;
        protected int _Agility = 5;
@@ -28,6 +28,7 @@ namespace inventorySystem
         public Charater(string name)
         {
             _name = name;
+            _maxHealth = _health;
         }
 
         public override string GetName()
@@ -37,7 +38,7 @@ namespace inventorySystem
 
         public override int GetDamage()
         {
-            return _damage;
+            return _damage + inventory.GetItemDamage() + _Strength;
         }
 
         //Stats
@@ -46,7 +47,7 @@ namespace inventorySystem
             Console.WriteLine(_name);
             Console.WriteLine("Level: " + _level);
             Console.WriteLine("EXP: " + _xp);
-            Console.WriteLine("Health: " + _Health);
+            Console.WriteLine("Health: " + _health);
             Console.WriteLine("Mana: " + _Mana);
             Console.WriteLine("Agility: " + _Agility);
             Console.WriteLine("Strength: " + _Strength);
@@ -98,10 +99,10 @@ namespace inventorySystem
             int health = Health;
 
             //get the damage of this monster
-            int damage = base.GetDamage();
+            int damage = GetDamage();
             //subtract the damatge from target monsters health
             target.Health -= damage;
-            Console.WriteLine(base.GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
         }
 
         public override void Fight(Creature[] targets)
@@ -116,7 +117,7 @@ namespace inventorySystem
             while (!validInput)
             {
                 //Print menu
-                Console.WriteLine("\nWho will " + base.GetName() + " fight? ");
+                Console.WriteLine("\nWho will " + GetName() + " fight? ");
                 //Iterate through targets
 
                 for (int i = 0; i < targets.Length; i++)
