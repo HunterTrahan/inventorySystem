@@ -10,14 +10,16 @@ namespace inventorySystem
     {
         private string _name = "";
         private int _monsterDamage = 10;
+        private int _exp;
 
 
-        public Monster(string name, int health, int damage)
+        public Monster(string name, int health, int damage, int exp)
         {
             _name = name;
             _health = health;
             _maxHealth = health;
             _monsterDamage = damage;
+            _exp = exp;
 
         }
 

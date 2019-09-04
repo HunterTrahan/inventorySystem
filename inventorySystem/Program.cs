@@ -33,10 +33,10 @@ namespace inventorySystem
             
 
             //monster list
-            Monster slime = new Monster("Slime", 100 , 10);
-            Monster skeleton = new Monster("Skeleton", 150, 20);
-            Monster zombie = new Monster("Zombie", 200, 5);
-            Monster wolf = new Monster("Wolf", 120, 15);
+            Monster slime = new Monster("Slime", 100 , 10, 10);
+            Monster skeleton = new Monster("Skeleton", 150, 20, 20);
+            Monster zombie = new Monster("Zombie", 200, 5, 15);
+            Monster wolf = new Monster("Wolf", 120, 15, 25);
             Charater myself = new Rogue("Aigis");
 
             //monster arrays used to make teams
