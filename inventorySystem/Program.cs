@@ -10,6 +10,25 @@ namespace inventorySystem
     {
         static void Main(string[] args)
         {
+            //0: Courtyard
+            //1: Castle Gate
+            //2: Graveyard
+            //3: Village                                   //n  s   e  w
+            Scene courtyard = new Scene("Courtyard",         1, 3, -1, 2,        "The courtyard is wide and open. There are exits to the north, south, east, and west.");
+            Scene castleGate = new Scene("Castle Gate",     -1, 0, -1, -1,       "There is a large entrance to the \ncastle. It appears to be locked. There is an exit to the south");
+            Scene graveyard = new Scene("Graveyard",        -1, -1, 0, -1,       "The graveyard is covered in a thin layer of fog. There is an exit to the east.");
+            Scene village = new Scene("Village",             0, -1, -1, -1,      "This is the village. There are a bunch of buildings, there is an exit to the north.");
+
+
+
+            Scene[] scenes = { courtyard, castleGate, graveyard, village };
+            Map map = new Map(0, scenes);
+
+            map.Menu();
+
+
+            Console.ReadKey();
+            return;
 
             //monster list
             Monster slime = new Monster("Slime", 100 , 10);
