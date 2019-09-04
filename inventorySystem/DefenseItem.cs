@@ -17,13 +17,17 @@ namespace inventorySystem
             }
 
         }
-
+      
 
         public DefenseItem(string newName, int newDefense, int newWeight)
         {
             name = newName;
             _defense = newDefense;
             weight = newWeight;
+        }
+        public void Print()
+        {
+            Console.WriteLine(name + ": " + _defense+ "\n" + weight);
         }
     }
 }

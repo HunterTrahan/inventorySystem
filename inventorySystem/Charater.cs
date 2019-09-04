@@ -13,7 +13,7 @@ namespace inventorySystem
         private int _level = 1;
         private int _damage = 5;
         private int[] _requiredEXP = { 100, 200, 600, 1000 };
-
+        
 
         //character specfic inevntory
        private Inventory inventory = new Inventory();
@@ -59,10 +59,14 @@ namespace inventorySystem
             Console.WriteLine("Combat damage: " + (_Strength + inventory.GetItemDamage()));
            
         }
-
+        private void UpdateArmor()
+        {
+            Armor = inventory.GetItemDefense();
+        }
         public void OpenInventory()
         {
             inventory.Menu();
+            UpdateArmor();
         }
 
         //exp system
@@ -99,7 +103,7 @@ namespace inventorySystem
             int health = Health;
 
             //get the damage of this monster
-            int damage = GetDamage();
+            int damage = GetDamage() - target.GetArmor().Defense;
             //subtract the damatge from target monsters health
             target.Health -= damage;
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
@@ -143,6 +147,7 @@ namespace inventorySystem
             }
 
         }
+        
 
     }
 }

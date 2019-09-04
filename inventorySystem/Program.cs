@@ -36,12 +36,12 @@ namespace inventorySystem
             Monster slime = new Monster("Slime", 100 , 10);
             Monster skeleton = new Monster("Skeleton", 150, 20);
             Monster zombie = new Monster("Zombie", 200, 5);
-            Monster wolf = new Monster("Wolf", 150, 15);
+            Monster wolf = new Monster("Wolf", 120, 15);
             Charater myself = new Rogue("Aigis");
 
             //monster arrays used to make teams
-            Creature[] goodTeam = { myself, slime, skeleton};
-            Creature[] evilTeam = { zombie, wolf };
+            Creature[] goodTeam = { myself, slime};
+            Creature[] evilTeam = { zombie, wolf, skeleton};
 
             //Open the inventory
             myself.OpenInventory();

@@ -10,9 +10,7 @@ namespace inventorySystem
     {
        private int _damage = 5;
        private bool _hasWeapon = false;
-       private int _defense = 5;
        private bool _hasArmor = false;
-       private int _armorValue = 0;
        private int _weightTotal = 0;
        private int _weightFromWeapon = 0;
        private int _weightFromArmor = 0;
@@ -20,7 +18,7 @@ namespace inventorySystem
        private float _gold = 0.00f;
        private attackItem[] _weapons;
        private DefenseItem[] _armor;
-
+        public DefenseItem CurrentArmor;
         //Populates the weapon list (Array)
         private attackItem Dagger = new attackItem("Iron Dagger", 10, 5);
         private attackItem Sword = new attackItem("Steel Sword", 15, 15);
@@ -45,15 +43,15 @@ namespace inventorySystem
         }
 
         //Returns the damage of weapons
-        public int GetItemDamage()
+        public DefenseItem GetItemDefense()
         {
-            return _damage;
+            return CurrentArmor;
         }
 
         //retrns the defense of armor
-        public int GetItemDefense()
+        public int GetItemDamage()
         {
-            return _defense;
+            return _damage;
         }
 
 
@@ -101,7 +99,7 @@ namespace inventorySystem
                     equipArmor();
                     // Update total weight
                     _weightTotal = _weightFromArmor + _weightFromWeapon;
-                    Console.WriteLine("defense: " + (_armorValue + _defense) + " weight: " + _weightTotal);
+                    CurrentArmor.Print();
                 }
 
                 else if (choice == "4")
@@ -109,7 +107,7 @@ namespace inventorySystem
                     unequipArmor();
                     // Update total weight
                     _weightTotal = _weightFromArmor + _weightFromWeapon;
-                    Console.WriteLine("defense: " + (_armorValue + _defense) + " weight: " + _weightTotal);
+                    CurrentArmor.Print();
                 }
 
                 else if (choice == "5")
@@ -267,6 +265,8 @@ namespace inventorySystem
         }
 
         //armor System
+        // Displays a menu that allows the player to pick from a list of available armor
+        // Sets the current Armor to the armor the player selected
         public void equipArmor()
         {
             string menu3 = "";
@@ -299,9 +299,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 15))
                         {
                             Console.WriteLine("Equipped Leather tunic.");
-                            _armorValue = _armor[0].Defense;
-                            _weightFromArmor = _armor[0].Weight;
-                            Console.WriteLine("Defense: " + _armorValue);
+                            CurrentArmor = _armor[0];
+                            CurrentArmor.Print();
                             _hasArmor = true;
                             menu3 = "0";
                         }
@@ -318,9 +317,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 20))
                         {
                             Console.WriteLine("Equipped Iron armor.");
-                            _armorValue = _armor[1].Defense;
-                            _weightFromArmor = _armor[1].Weight;
-                            Console.WriteLine("Defense: " + _armorValue);
+                            CurrentArmor = _armor[1];
+                            CurrentArmor.Print();
                             _hasArmor = true;
                             menu3 = "0";
                         }
@@ -337,9 +335,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 25))
                         {
                             Console.WriteLine("Equipped Steel armor.");
-                            _armorValue = _armor[2].Defense;
-                            _weightFromArmor = _armor[2].Weight;
-                            Console.WriteLine("Defense: " + _armorValue);
+                            CurrentArmor = _armor[2];
+                            CurrentArmor.Print();
                             _hasArmor = true;
                             menu3 = "0";
                         }
@@ -356,9 +353,8 @@ namespace inventorySystem
                         if(checkWeight(_weightFromWeapon, 40))
                         {
                             Console.WriteLine("Equipped Platnium armor.");
-                            _armorValue = _armor[3].Defense;
-                            _weightFromArmor = _armor[3].Defense;
-                            Console.WriteLine("Defense: " + _armorValue);
+                            CurrentArmor = _armor[3];
+                            CurrentArmor.Print();
                             _hasArmor = true;
                             menu3 = "0";
                         }
@@ -385,11 +381,8 @@ namespace inventorySystem
             if (_hasArmor)
             {
                 Console.WriteLine("Unequiped armor.");
-                _armorValue = 0;
                 _hasArmor = false;
-                _weightFromArmor = 0;
-                
-                _defense = 5;
+                CurrentArmor = null;
             }
 
             else

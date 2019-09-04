@@ -10,7 +10,7 @@ namespace inventorySystem
     {
         protected int _health;
         protected int _maxHealth;
-
+        protected DefenseItem Armor;
         public virtual void Fight(Creature target)
         {
 
@@ -24,6 +24,15 @@ namespace inventorySystem
         public virtual int GetDamage()
         {
             return 0;
+        }
+
+        public virtual DefenseItem GetArmor()
+        {
+            if(Armor == null)
+            {
+                return new DefenseItem("Naked",5,0);
+            }
+            return Armor;
         }
 
         public virtual string GetName()

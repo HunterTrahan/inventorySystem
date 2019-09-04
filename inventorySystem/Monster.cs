@@ -49,7 +49,7 @@ namespace inventorySystem
             int health = Health;
 
             //get the damage of this monster
-            int damage = GetDamage();
+            int damage = GetDamage() - target.GetArmor().Defense;
             //subtract the damatge from target monsters health
             target.Health -= damage; 
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
