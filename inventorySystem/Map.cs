@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace inventorySystem
 {
@@ -70,6 +71,8 @@ namespace inventorySystem
                 Console.WriteLine("\nMenu");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Travel");
+                Console.WriteLine("2: Save");
+                Console.WriteLine("3: Load");
 
                choice = Console.ReadLine();
 
@@ -77,6 +80,16 @@ namespace inventorySystem
                 if (choice == "1")
                 {
                     Travel();
+                }
+
+                else if (choice == "2")
+                {
+                    Save("save.txt");
+                }
+
+                else if (choice == "3")
+                {
+                    Load("save.txt");
                 }
             }
         }
@@ -104,6 +117,27 @@ namespace inventorySystem
                 //Tell the player thet cannot
                 Console.WriteLine("There is nothing in that direction");
             }
+        }
+
+        //Save and Load system
+        public void Save(string path)
+        {
+            //Create a writer for the file at our path
+            StreamWriter writer = File.CreateText(path);
+            //Write to it the same way we write to thye console
+            writer.WriteLine(CurrentSceneID);
+            //Close it
+            writer.Close();
+        }
+
+        public void Load(string path)
+        {
+            //Create a reader object for the file at our path
+            StreamReader reader = File.OpenText(path);
+            //Write to it the same way we read from the console
+            CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+            //Close it
+            reader.Close();
         }
     }
 }

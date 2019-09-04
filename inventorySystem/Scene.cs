@@ -14,6 +14,7 @@ namespace inventorySystem
         protected int _south;
         protected int _east;
         protected int _west;
+        
 
         public Scene(string name, int northID, int southID, int eastID, int westID, string description)
         {
