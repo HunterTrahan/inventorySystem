@@ -9,13 +9,15 @@ namespace inventorySystem
 {
     class Map
     {
-        private int _currentLocation;   //ID of the cuurent scene
+        private int _currentLocation = 0;   //ID of the cuurent scene
         private Scene[] _sceneList;     //List of all the scenes on the map
+        private Creature[] _players;
 
-        public Map(int startingSceneID, Scene[] scenes)
+        public Map(int startingSceneID, Scene[] scenes, Creature[] players)
         {
             _currentLocation = startingSceneID;
             _sceneList = scenes;
+            _players = players;
         }
 
         public void PrintCurrentScene()
@@ -123,6 +125,7 @@ namespace inventorySystem
                 //Tell the player thet cannot
                 Console.WriteLine("There is nothing in that direction");
             }
+            CheckForCreature();
         }
 
 
@@ -133,6 +136,23 @@ namespace inventorySystem
             {
                 //search the room
                 Console.WriteLine(_sceneList[_currentLocation].GetHidden());
+            }
+        }
+
+        
+        public void CheckForCreature()
+        {
+            //If current scene is valid
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                //check the current scene
+                Scene currentScene = _sceneList[_currentLocation];
+                if (currentScene.GetCleared() == false)
+                {
+                    //fight
+                    Encounter encounter = new Encounter(_players, currentScene.GetEnemies());
+                    encounter.Start();
+                }
             }
         }
 

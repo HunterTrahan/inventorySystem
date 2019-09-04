@@ -106,6 +106,22 @@ namespace inventorySystem
                 {
                     //stop
                     stillFighting = false;
+                    if (goodAlive)
+                    {
+
+                        //Give XP to each character in good team
+                        //For each creature in good team
+                        foreach (Creature cr in _goodMonsters)
+                        {
+                            //If that Creature is a character
+                            if (cr is Charater)
+                            {
+                                //Give it XP from bad team
+                                Charater ch = (Charater)cr;
+                                ch.EXP += GetTotalXP(_badMonsters);
+                            }
+                        }
+                    }
                 }
             }
         }

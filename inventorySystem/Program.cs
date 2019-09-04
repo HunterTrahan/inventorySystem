@@ -42,6 +42,7 @@ namespace inventorySystem
             //monster arrays used to make teams
             Creature[] goodTeam = { myself, slime};
             Creature[] evilTeam = { zombie, wolf, skeleton};
+            Creature[] Empty = { };
 
             //Open the inventory
             myself.OpenInventory();
