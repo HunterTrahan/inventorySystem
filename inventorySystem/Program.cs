@@ -43,18 +43,6 @@ namespace inventorySystem
 
             map.Menu();
 
-
-            ////Open the inventory
-            //myself.OpenInventory();
-
-            ////encounter from the two arrays of monsters
-            //Encounter encounter = new Encounter(goodTeam, evilTeam);
-
-            //encounter.Print();
-
-            //Console.WriteLine("");
-            //encounter.Start ();
-
             Console.ReadKey();
             return;
         

@@ -50,7 +50,29 @@ namespace inventorySystem
         //Stats
         public override void Print()
         {
+            //Displays Class for character
             Console.WriteLine(_name);
+            if (this is Rogue)
+            {
+                Console.WriteLine("Class: Rogue");
+            }
+
+            if (this is Knight)
+            {
+                Console.WriteLine("Class: Knight");
+            }
+
+            if (this is Wizard)
+            {
+                Console.WriteLine("Class: Wizard");
+            }
+
+            if (this is Berserker)
+            {
+                Console.WriteLine("Class: Berserker");
+            }
+
+            //Displays actual stats
             Console.WriteLine("Level: " + _level);
             Console.WriteLine("EXP: " + _xp);
             Console.WriteLine("Health: " + _health);
@@ -157,7 +179,7 @@ namespace inventorySystem
         //Save and Load system
         public void Save(StreamWriter writer)
         {
-             //Write to it the same way we write to the console
+             //Writes what needs to be saved which is then saved onto the file in Map.cs
              writer.WriteLine(_level);
              writer.WriteLine(_name);
              writer.WriteLine(EXP);
