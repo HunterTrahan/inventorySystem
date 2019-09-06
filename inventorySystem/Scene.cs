@@ -27,6 +27,7 @@ namespace inventorySystem
             _south = southID;
             _east = eastID;
             _west = westID;
+            _enemies = enemies;
             _hidden = "Nothing of intrest.";
             if (_enemies.Length == 0)
             {

@@ -57,6 +57,11 @@ namespace inventorySystem
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage!");
         }
 
+        public override int GetXP()
+        {
+            return _exp;
+        }
+
         public override void Fight(Creature[] targets)
         {
             if (Health <= 0)

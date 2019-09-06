@@ -19,6 +19,7 @@ namespace inventorySystem
        private attackItem[] _weapons;
        private DefenseItem[] _armor;
         public DefenseItem CurrentArmor;
+
         //Populates the weapon list (Array)
         private attackItem Dagger = new attackItem("Iron Dagger", 10, 5);
         private attackItem Sword = new attackItem("Steel Sword", 15, 15);

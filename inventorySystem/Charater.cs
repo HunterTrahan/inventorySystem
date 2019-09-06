@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace inventorySystem
 {
@@ -34,6 +35,11 @@ namespace inventorySystem
         public override string GetName()
         {
             return _name;
+        }
+
+        public int GetLevel()
+        {
+            return _level;
         }
 
         public override int GetDamage()
@@ -147,7 +153,43 @@ namespace inventorySystem
             }
 
         }
-        
+
+        //Save and Load system
+        public void Save(StreamWriter writer)
+        {
+             //Write to it the same way we write to the console
+             writer.WriteLine(_level);
+             writer.WriteLine(_name);
+             writer.WriteLine(EXP);
+             
+            if (this is Rogue)
+            {
+                writer.WriteLine("Rogue");
+            }
+
+            if (this is Knight)
+            {
+                writer.WriteLine("Knight");
+            }
+
+            if (this is Wizard)
+            {
+                writer.WriteLine("Wizard");
+            }
+
+            if (this is Berserker)
+            {
+                writer.WriteLine("Berserker");
+            }
+        }
+
+        public void Load(StreamReader reader)
+        {        
+             //Write to it the same way we read from the console
+             _level = Convert.ToInt32(reader.ReadLine());
+             EXP = Convert.ToInt32(reader.ReadLine());
+        }
+
 
     }
 }

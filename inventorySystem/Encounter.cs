@@ -17,6 +17,16 @@ namespace inventorySystem
             _goodMonsters = team2;
         }
 
+        int GetTotalXP(Creature[] creatures)
+        {
+            int total = 0;
+            for (int i = 0; i < creatures.Length; i++)
+            {
+                total += creatures[i].GetXP();
+            }
+            return total;
+        }
+
         public void Print()
         {
             //Iterate through badMonster and print

@@ -10,6 +10,7 @@ namespace inventorySystem
     {
         protected int _health;
         protected int _maxHealth;
+        protected int _xp;
         protected DefenseItem Armor;
         public virtual void Fight(Creature target)
         {
@@ -69,5 +70,10 @@ namespace inventorySystem
          {
 
          }
+
+        public virtual int GetXP()
+        {
+            return _xp;
+        }
     }
 }

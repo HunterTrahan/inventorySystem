@@ -71,31 +71,58 @@ namespace inventorySystem
                 PrintCurrentScene();
                 //Print menu
                 Console.WriteLine("\nMenu");
-                Console.WriteLine("0: Exit");
-                Console.WriteLine("1: Travel");
-                Console.WriteLine("2: Search");
-                Console.WriteLine("3: Save");
-                Console.WriteLine("4: Load");
+                Console.WriteLine("0: Quit");
+                Console.WriteLine("1: Inventory");
+                Console.WriteLine("2: Travel");
+                Console.WriteLine("3: Stats");
+                Console.WriteLine("4: Search");
+                Console.WriteLine("5: Save");
+                Console.WriteLine("6: Load");
 
                choice = Console.ReadLine();
 
                 //Get player choice
                 if (choice == "1")
                 {
-                    Travel();
+                    Console.WriteLine("Whos Inventory?");
+                    Console.WriteLine("1: Aigis");
+                    Console.WriteLine("2: Chie");
+
+                    string choice2 = Console.ReadLine();
+
+                    if (choice2 == "1")
+                    {
+                        ((Charater)_players[0]).OpenInventory();
+                    }
+
+                    else if (choice2 == "2")
+                    {
+                        ((Charater)_players[1]).OpenInventory();
+                    } 
                 }
 
                 else if (choice == "2")
                 {
-                    search();
+                    Travel();
                 }
 
                 else if (choice == "3")
                 {
-                    Save("save.txt");
+                    ((Charater)_players[0]).Print();
+                    ((Charater)_players[1]).Print();
                 }
 
                 else if (choice == "4")
+                {
+                    search();
+                }
+
+                else if (choice == "5")
+                {
+                    Save("save.txt");
+                }
+
+                else if (choice == "6")
                 {
                     Load("save.txt");
                 }
@@ -164,6 +191,8 @@ namespace inventorySystem
             StreamWriter writer = File.CreateText(path);
             //Write to it the same way we write to thye console
             writer.WriteLine(CurrentSceneID);
+            ((Charater)_players[0]).Save(writer);
+            ((Charater)_players[1]).Save(writer);
             //Close it
             writer.Close();
         }

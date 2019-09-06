@@ -12,48 +12,48 @@ namespace inventorySystem
 
         static void Main(string[] args)
         {
-            //0: Courtyard
-            //1: Castle Gate
-            //2: Graveyard
-            //3: Village                                   //n  s   e  w
-            Scene courtyard = new Scene("Courtyard",         1, 3, -1, 2,        "The courtyard is wide and open. There are exits to the north, south, east, and west.");
-            Scene castleGate = new Scene("Castle Gate",     -1, 0, -1, -1,       "There is a large entrance to the \ncastle. It appears to be locked. There is an exit to the south");
-            Scene graveyard = new Scene("Graveyard",        -1, -1, 0, -1,       "The graveyard is covered in a thin layer of fog. There is an exit to the east.");
-            Scene village = new Scene("Village",             0, -1, -1, -1,      "This is the village. There are a bunch of buildings, there is an exit to the north.");
 
-
-
-            Scene[] scenes = { courtyard, castleGate, graveyard, village };
-            Map map = new Map(0, scenes);
-
-            map.Menu();
-
-
-            Console.ReadKey();
-            
-
-            //monster list
-            Monster slime = new Monster("Slime", 100 , 10, 10);
+            //monster and player list
+            Monster slime = new Monster("Green Slime", 100 , 10, 10);
+            Monster slime2 = new Monster("Red Slime", 120 , 12, 12);
             Monster skeleton = new Monster("Skeleton", 150, 20, 20);
             Monster zombie = new Monster("Zombie", 200, 5, 15);
             Monster wolf = new Monster("Wolf", 120, 15, 25);
             Charater myself = new Rogue("Aigis");
+            Charater party1 = new Knight("Chie");
 
-            //monster arrays used to make teams
-            Creature[] goodTeam = { myself, slime};
-            Creature[] evilTeam = { zombie, wolf, skeleton};
+            //Arrays used to make teams
+            Creature[] playersTeam = { myself, party1};
+            Creature[] undeadTeam = { zombie, skeleton};
+            Creature[] slimeTeam = { slime, slime2};
             Creature[] Empty = { };
 
-            //Open the inventory
-            myself.OpenInventory();
+            //0: Courtyard
+            //1: Castle Gate
+            //2: Graveyard
+            //3: Village
+            //                                       N  S   E  W
+            Scene courtyard = new Scene("Courtyard", 1, 3, -1, 2, Empty, "The courtyard is wide and open. There are exits to the north, south, east, and west.");
+            Scene castleGate = new Scene("Castle Gate", -1, 0, -1, -1, slimeTeam, "There is a large entrance to the \ncastle. It appears to be locked. There is an exit to the south");
+            Scene graveyard = new Scene("Graveyard", -1, -1, 0, -1, undeadTeam, "The graveyard is covered in a thin layer of fog. There is an exit to the east.");
+            Scene village = new Scene("Village", 0, -1, -1, -1, Empty, "This is the village. There are a bunch of buildings, there is an exit to the north.");
 
-            //encounter from the two arrays of monsters
-            Encounter encounter = new Encounter(goodTeam, evilTeam);
+            Scene[] scenes = { courtyard, castleGate, graveyard, village };
+            Map map = new Map(0, scenes, playersTeam);
 
-            encounter.Print();
+            map.Menu();
 
-            Console.WriteLine("");
-            encounter.Start ();
+
+            ////Open the inventory
+            //myself.OpenInventory();
+
+            ////encounter from the two arrays of monsters
+            //Encounter encounter = new Encounter(goodTeam, evilTeam);
+
+            //encounter.Print();
+
+            //Console.WriteLine("");
+            //encounter.Start ();
 
             Console.ReadKey();
             return;
@@ -97,7 +97,7 @@ namespace inventorySystem
             player.OpenInventory();
 
             //party memebers
-            Charater party1 = new Charater("Chie");
+            //Charater party1 = new Charater("Chie");
             Charater party2 = new Charater("Futaba");
             party1.Print();
             Console.WriteLine("");
